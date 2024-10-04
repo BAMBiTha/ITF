@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+}
+body{
+    background-color: pink;
+}
+.navbar{
+    display: flex;
+    flex-direction: row;
+    background-color:pink;
+    padding: 5px 20px;
+    column-gap: 5px;
+    justify-content: end;
+    justify-content: space-between;
+}
+.nav-item{
+    color:black (1,29,54,0.199);
+    font-family: monospace;
+}
+.nav-item-container{
+    display: flex;
+    column-gap: 15px;
+}
+button{
+    background-color: aliceblue;
+    border:none;
+    color: red;
+    border-radius:5%;
+    font-family: monospace;
+}
+.picture{
+    width: 50;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    justify-self: center;
+}
+.width-pic{
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+}
