@@ -13,14 +13,17 @@
             <p>1</p>
         </div>
     </div>
-    <h1 id="username">Username, hi</h1>
+    <a href="https://github.com/BAMBiTha/ITF"><h1 id="username">Username,Thanida Thanomrod 67070224 hi</h1></a>
     <label>Set username</label><input id="input" type="text"><button onclick="setName()">set</button>
     <label>Set profile</label><input id="input-url" type = "text"><button onclick="setImg()">set</button>
     <input id="nameee" type="text">
     <input id="phone" type="text">
-    <button onclick="addRow()">add</button>
+    <button id="add" onclick="updateRow()">add</button>
+    <button class="button" id="export" onclick="saveCSV()">Export</button>
+
     <table id="table">
         <tr>
+            <th>id</th>
             <th>name</th>
             <th>phone</th>
         </tr>
@@ -34,7 +37,11 @@
         const table = document.getElementById("table");
         const nameee = document.getElementById("nameee");
         const phone = document.getElementById("phone")
-        
+        let count = 0;
+        var phonenumber = [];
+        const addBtn = document.getElementById("add");
+        const saveButton = document.getElementById("export");
+        console.log(saveButton.value)
         
         function setName(){
             name.textContent = input.value + " , oh";
@@ -55,18 +62,43 @@
             table.appendChild(row);
 
         }
+        function updateRow(){
+            count += 1;
+            const row = document.createElement("tr");
+            const cellNo = document.createElement("td");
+            const cellName = document.createElement("td");
+            const cellTel = document.createElement("td");
+            cellNo.textContent = count;
+            cellName.textContent = document.getElementById("nameee").value;
+            cellTel.textContent = document.getElementById("phone").value;
+            row.appendChild(cellNo);
+            row.appendChild(cellName);
+            row.appendChild(cellTel);
+            const table = document.getElementById("table");
+            table.appendChild(row);
+            
+            let arr = [];
+            arr.push(count);
+            arr.push(document.getElementById("nameee").value);
+            arr.push(document.getElementById("phone").value);
+            phonenumber.push(arr);
+            console.log(phonenumber);
+            
+            document.getElementById("nameee").value = "";
+            document.getElementById("phone").value = "";
+        };
         function saveCSV() {
-        const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
-        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-        const link = document.createElement("a");
-        const url = URL.createObjectURL(blob);
-        link.setAttribute("href", url);
-        link.setAttribute("download", "data.csv");
-        link.style.visibility = "hidden";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-};
+            const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "data.csv");
+            link.style.visibility = "hidden";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
     </script>
 </body>
 </html>

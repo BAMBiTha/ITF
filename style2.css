@@ -39,6 +39,12 @@
     border-radius: 2px;
     padding: 4px;
 }
+.button:hover{
+    border: 1px solid black;
+    background-color: blueviolet;
+    border-radius: 2px;
+    padding: 4px;
+}
 .body{
     background-color: blanchedalmond;
 }
